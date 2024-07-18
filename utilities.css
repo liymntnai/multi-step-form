@@ -1,0 +1,140 @@
+/* Utilities */
+.grid--1-3{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    justify-content: center;
+    align-items: flex-start;
+
+}
+.grid-3{
+    grid-template-columns: repeat(3, 1fr);
+}
+/* .container{
+    overflow: auto;
+    margin:auto;
+} */
+.card{
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex-c{
+    display: flex;
+    flex-direction: column;
+}
+.flex-between{
+    display: flex;
+    justify-content: space-between;
+}
+.text-center{
+    text-align: center;
+}
+
+/* Buttons*/
+.btn{
+    border-radius: 5px;
+    padding: 8px 16px;
+}
+.btn:hover{
+    cursor: pointer;
+}
+.btn-container{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+.prev{
+    justify-self: flex-start;
+    background: transparent;
+    border: none;
+}
+.next{
+    justify-self: flex-end;
+    background: var(--marine-blue);
+    color: #fff;
+}
+.next.confirm{
+    background: var(--purplish-blue);
+    color: #fff;
+}
+.checked{
+    background-color: var(--alabaster);
+    border: 1px solid var(--purplish-blue);
+}
+
+.l-error{
+    color: red;
+}
+.error{
+    border: 1px solid red;
+}
+.none{
+    display: none;
+}
+/* Text sizes */
+.md-thin{
+    font-size: 1em;
+}
+.md-thin,.md-medium{
+    color: #999;
+    font-weight: 400;
+}
+.md-bold{
+    font-size: 1em;
+    color: var(--marine-blue);
+    font-weight: bold;
+}
+.md-medium{
+    font-size: 1em;
+
+}
+.md-month{
+color: var(--marine-blue);
+font-size: 1em;
+letter-spacing: 1px;
+
+}
+
+/* Margin */
+.my-1 {
+    margin: 1rem 0;
+  }
+
+  .my-2 {
+    margin: 1.5rem 0;
+  }
+  
+  .my-3 {
+    margin: 2rem 0;
+  }
+  
+  .my-4 {
+    margin: 3rem 0;
+  }
+  
+  .mb-1 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .mb-2 {
+    margin-bottom: 1rem;
+  }
+  
+  .mb-3 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .mb-4 {
+    margin-bottom: 2rem;
+  }
+  
