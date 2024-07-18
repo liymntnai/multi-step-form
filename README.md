@@ -16,8 +16,6 @@ This is a solution to the [Multi-step form challenge on Frontend Mentor](https:/
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 ### The challenge
@@ -52,11 +50,7 @@ Users should be able to:
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### What I learned
 
@@ -106,7 +100,9 @@ If you want more help with writing markdown, we'd recommend checking out [The Ma
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+-Customizing checkboxes
+-Customizing radio buttons and inputs
+-Implementing a toggle switch
 
 ### Useful resources
 
@@ -117,8 +113,7 @@ Use this section to outline areas that you want to continue focusing on in futur
 ## Author
 
 - Name - Liym-ntai Ray Langdji
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- Frontend Mentor - [@liymntai](https://www.frontendmentor.io/profile/liymntai)
+- Twitter - [@LiymRay197](https://www.twitter.com/LiymRay197)
 
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
 
