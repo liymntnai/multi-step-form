@@ -100,9 +100,9 @@ If you want more help with writing markdown, we'd recommend checking out [The Ma
 
 ### Continued development
 
--Customizing checkboxes
--Customizing radio buttons and inputs
--Implementing a toggle switch
+- Customizing checkboxes
+- Customizing radio buttons and inputs
+- Implementing a toggle switch
 
 ### Useful resources
 
