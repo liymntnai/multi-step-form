@@ -72,6 +72,12 @@
     background: var(--purplish-blue);
     color: #fff;
 }
+.next:hover{
+    background-color:  hsl(213, 83%, 12%);
+}
+.next.confirm:hover{
+    background-color: hsl(243, 76%, 47%);
+}
 .checked{
     background-color: var(--alabaster);
     border: 1px solid var(--purplish-blue);

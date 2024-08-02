@@ -5,102 +5,121 @@ const prevBtn = document.querySelector('.prev');
 const nextBtn = document.querySelector('.next');
 const addOns = document.querySelectorAll('.add-on');
 const total = document.querySelector('.result--total');
+const labelErrors = document.querySelectorAll('.l-error');
 const additions = document.querySelector('.add')
 const arcadePrice = 9
 const advancedPrice = 12
 const proPrice = 15
+var addText = []
 
-
-let price=[]
-let title=[]
 let curSlide = 1;
 let bill=arcadePrice
-// let ex
-
 
 
 total.textContent = `+${bill}/mo`
+
+
+
 addOns.forEach(function(a){
 
     a.addEventListener('click', function(e){
         if(e.target.classList.contains('checkmark'))
-         {  if(a.classList.contains('checked')){
+
+         {  
+            if(a.classList.contains('checked')){
 
              a.classList.remove('checked');
              bill -= Number(a.querySelector('.price--addon').textContent.at(2));
              total.textContent = `+${bill}/mo`;
-             price.pop( a.querySelector('.price--addon').textContent )
-             title.pop( a.querySelector('.md-bold').textContent )
-         
-        console.log(price);
-        
-         }
+             var price =a.querySelector('.price--addon').textContent 
+             var title= a.querySelector('.md-bold').textContent 
+            //  if checked then add price and title to the array
+            //  else remove price and title from array
+            removeElement(addText,title);
+             }
          else{
              a.classList.add('checked');
              bill += Number(a.querySelector('.price--addon').textContent.at(2));
              total.textContent = `+${bill}/mo`;
-             price.push( a.querySelector('.price--addon').textContent )
-             title.push( a.querySelector('.md-bold').textContent )
-             console.log(price);
+             var price = a.querySelector('.price--addon').textContent 
+             var title = a.querySelector('.md-bold').textContent 
+
+             createElement(addText, price, title)
              
          }
-         for(let i=0; i<title.length; i++) {
-            // additions.add(addText())
-            const addText = document.createElement('div')
-            addText.classList.add('add-payment') 
-            addText.classList.add('flex-between')
-            addText.innerHTML = 
-            `<p class="md-thin">${title[i]}</p>
-             <p class="md-month result--o">${price[i]}</p>`
-
-             additions.append(addText)
-         }}
+        }
        
     })
 })
-const addText = function(){
-    const addText = document.createElement('div')
-    addText.classList.add('add-payment') 
-    addText.classList.add('flex-between')
-    addText.innerHTML = 
-    `<p class="md-thin">${a.querySelector('.md-bold').textContent}</p>
-     <p class="md-month result--o">${a.querySelector('.price--addon').textContent}</p>`
-     return addText;
-    }
+//////// Failures 
+// const displayTitleAndPrice = function(price, title, state) {
+//     for(var i = 0; i < price.length; i++) {
+//         const addText = document.createElement('div')
+            
+//     }
+// }
+const createElement = function(addText, price, title) {
+    var div = document.createElement('div')
+    div.classList.add('add-payment') 
+    div.classList.add('flex-between')
+    div.innerHTML = 
+    `<p class="md-thin">${title}</p>
+    <p class="md-month result--o">${price}</p>`
+    
+    additions.append(div)
+    addText.push(div)
 
-const checkPrevBtn = function(){
+}
+const removeElement = function(addText,title) {
+    console.log(addText.length-1);
+    console.log(addText[addText.length]);
+    // if(addText.length<1)
+    let index=addText.findIndex( div => div.firstChild.textContent===title)
+    console.log(index);
+    
+    additions.removeChild(addText[index])
+    addText.splice(index, 1)
+}
+
+const forwardSlide = function(e){
+    e.preventDefault(); 
+    if(validateInfo())
+    showSlide(1)
+    // checkPrevBtn()
     if(curSlide===0)
         prevBtn.style.display='none'
     else
     prevBtn.style.display='inline-block'
 }
-const forwardSlide = function(e){
-    e.preventDefault(); 
-    if(validateInfo())
-    showSlide(1)
-    checkPrevBtn()
-}
 const backwardSlide = function(e){
 e.preventDefault();
  showSlide(-1)
- checkPrevBtn()
+//  checkPrevBtn()
+if(curSlide===0)
+    prevBtn.style.display='none'
+else
+prevBtn.style.display='inline-block'
 }
 const showSlide = function(n){
     carousels[curSlide].classList.toggle('active');
     curSlide+=n
     if(curSlide<0)
      curSlide=0;
-    if(curSlide===carousels.length-1){ 
-    nextBtn.classList.add('confirm');
-    nextBtn.textContent = 'Confirm'
-    }
-    if(curSlide<carousels.length-1&&curSlide>0){
-        nextBtn.classList.remove('confirm');
-        nextBtn.textContent = 'Next Step'
-    }
-    // curSlide=0;
+    checkPrevBtn()
     carousels[curSlide].classList.toggle('active');
     activateDot()
+}
+const checkPrevBtn = function(){
+    if(curSlide===carousels.length-1){ 
+        nextBtn.classList.add('confirm');
+        nextBtn.textContent = 'Confirm'
+        }
+        if(curSlide<carousels.length-1&&curSlide>0){
+            nextBtn.classList.remove('confirm');
+            nextBtn.textContent = 'Next Step'
+        }
+        // curSlide=0;
+   
 }
 
 const activateDot = function(){
@@ -114,22 +133,45 @@ const activateDot = function(){
     }
 
 activateDot()
-prevBtn.addEventListener('click', backwardSlide)
-nextBtn.addEventListener('click', forwardSlide)
+
+const moveToSlide1 = function(e){
+    e.preventDefault()
+carousels.forEach(function(carousel){
+carousel.classList.remove('active')
+})
+carousels[1].classList.add('active')
+curSlide=1
+activateDot()
+checkPrevBtn()
+}
 
 const validateInfo = function(){
     const input = [...carousels[curSlide].querySelectorAll('input')]
     // console.log(input);
    let valid = true
-    input.forEach(i => {
+    input.forEach((i,index) => {
         if(!i.checkValidity()){
-            valid = !valid
+            valid = false
             console.log(i.validationMessage)
+            labelErrors[index].textContent = i.validationMessage
+            i.classList.add('error')
+            i.focus()
+        }
+        else{
+
+            labelErrors[index].textContent = ''
+            i.classList.remove('error')
         }
 // return true
     })
+
   return valid
     }
+document.querySelector('.reset').addEventListener('click',
+        moveToSlide1
+    );
+prevBtn.addEventListener('click', backwardSlide)
+nextBtn.addEventListener('click', forwardSlide)
 
     //Togle monthly-yearly switch
     const mySwitch = document.querySelector('.switch')
