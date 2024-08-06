@@ -54,6 +54,8 @@
     bottom: 0;
     height: 34px;
     width: 100%;
+    display: flex;
+    justify-content: space-around;
     /* transform: translateY(-50%); */
 }
 .prev{
@@ -68,14 +70,18 @@
     background: var(--marine-blue);
     color: #fff;
 }
-.next.confirm{
-    background: var(--purplish-blue);
-    color: #fff;
-}
+
 .next:hover{
     background-color:  hsl(213, 83%, 12%);
 }
-.next.confirm:hover{
+.confirm{
+    right: 0;
+    position: absolute;
+    display: none;
+    background: var(--purplish-blue);
+    color: #fff;
+}
+.confirm:hover{
     background-color: hsl(243, 76%, 47%);
 }
 .checked{
@@ -89,25 +95,26 @@
 .error{
     border: 1px solid red;
 }
+
 .none{
     display: none;
 }
 /* Text sizes */
 .md-thin{
     font-size: 1em;
+    line-height: 1.5rem;
 }
 .md-thin,.md-medium{
     color: #999;
     font-weight: 400;
 }
 .md-bold{
-    font-size: 1em;
+    font-size: 1.em;
     color: var(--marine-blue);
     font-weight: bold;
 }
 .md-medium{
-    font-size: 1em;
-
+    font-size: 1rem;
 }
 .md-month{
 color: var(--marine-blue);

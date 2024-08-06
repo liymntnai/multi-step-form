@@ -7,18 +7,27 @@ const addOns = document.querySelectorAll('.add-on');
 const total = document.querySelector('.result--total');
 const labelErrors = document.querySelectorAll('.l-error');
 const additions = document.querySelector('.add')
+const confirmBtn = document.querySelector('.confirm');
+const form = document.querySelector('.carousel-box');
+
 const arcadePrice = 9
 const advancedPrice = 12
 const proPrice = 15
 var addText = []
 
-let curSlide = 1;
+let curSlide = 0;
 let bill=arcadePrice
 
 
 total.textContent = `+${bill}/mo`
 
-
+confirmBtn.addEventListener('click',function(e){
+    e.preventDefault();
+    const submitSuccess = document.querySelector('.submit-success');
+    submitSuccess.classList.remove('hidden')
+    form.classList.add('hidden')
+    // alert('Form submitted successfully');
+})
 
 addOns.forEach(function(a){
 
@@ -73,7 +82,6 @@ const createElement = function(addText, price, title) {
 const removeElement = function(addText,title) {
     console.log(addText.length-1);
     console.log(addText[addText.length]);
-    // if(addText.length<1)
     let index=addText.findIndex( div => div.firstChild.textContent===title)
     console.log(index);
     
@@ -85,16 +93,16 @@ const forwardSlide = function(e){
     e.preventDefault(); 
     if(validateInfo())
     showSlide(1)
-    // checkPrevBtn()
+
     if(curSlide===0)
         prevBtn.style.display='none'
     else
     prevBtn.style.display='inline-block'
 }
 const backwardSlide = function(e){
+
 e.preventDefault();
  showSlide(-1)
-//  checkPrevBtn()
 if(curSlide===0)
     prevBtn.style.display='none'
 else
@@ -111,14 +119,14 @@ const showSlide = function(n){
 }
 const checkPrevBtn = function(){
     if(curSlide===carousels.length-1){ 
-        nextBtn.classList.add('confirm');
-        nextBtn.textContent = 'Confirm'
+        confirmBtn.style.display='inline-block'
+        nextBtn.style.display='none'
         }
         if(curSlide<carousels.length-1&&curSlide>0){
-            nextBtn.classList.remove('confirm');
-            nextBtn.textContent = 'Next Step'
+            nextBtn.style.display='inline-block';
+            confirmBtn.style.display='none'
         }
-        // curSlide=0;
+
    
 }
 
@@ -147,7 +155,6 @@ checkPrevBtn()
 
 const validateInfo = function(){
     const input = [...carousels[curSlide].querySelectorAll('input')]
-    // console.log(input);
    let valid = true
     input.forEach((i,index) => {
         if(!i.checkValidity()){
@@ -155,14 +162,13 @@ const validateInfo = function(){
             console.log(i.validationMessage)
             labelErrors[index].textContent = i.validationMessage
             i.classList.add('error')
-            i.focus()
+            // i.focus()
         }
         else{
 
             labelErrors[index].textContent = ''
             i.classList.remove('error')
         }
-// return true
     })
 
   return valid
@@ -174,33 +180,44 @@ prevBtn.addEventListener('click', backwardSlide)
 nextBtn.addEventListener('click', forwardSlide)
 
     //Togle monthly-yearly switch
+    const toggleSwitch = function(){
+
+   
     const mySwitch = document.querySelector('.switch')
     const monthly = document.querySelector('.billing .month');
     const yearly = document.querySelector('.billing .yearly');
     const slider = document.querySelector('.billing .slider')
     let monthlyPlan=true
-
-
-    var sliderCounter = 1
     
     
     mySwitch.addEventListener('click', function(e){
 
         e.preventDefault()
+        const free = document.querySelectorAll('.free');
         if(monthly.classList.contains('md-bold')){
 
             monthly.classList.remove('md-bold')
             yearly.classList.add('md-bold')
             slider.style.transform = 'translateX(11px)'
+       
+            free.forEach(function(f){
+                f.style.display = 'block'
+            })
+            
         }
         else{
             monthlyPlan=false
             monthly.classList.add('md-bold')
             yearly.classList.remove('md-bold')
             slider.style.transform = 'translateX(0px)'
+            free.forEach(function(f){
+                f.style.display = 'none'
+            })
         }
 
     })
+}
+toggleSwitch()
 
 //     const submitBtn = document.querySelector('.submit')
 

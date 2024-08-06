@@ -67,7 +67,7 @@
     <form action="" class="carousel-box container">
      
       <!-- carousel -Personal info -->
-       <div class="carousel">
+       <div class="carousel active">
 
         <div class="title-box my-2">
          <h1 class="title mb-1">Personal info</h1>
@@ -108,7 +108,7 @@
 
     <!-- Carousel- Select your plan -->
 
-    <div class="carousel active">
+    <div class="carousel">
 
       <div class="title-box my-2">
         <h1 class="title mb-1">Select your plan</h1>
@@ -131,6 +131,7 @@
           <div class="plan-info">
             <h2 class="md-bold">Arcade</h2>
             <p class="md-thin">$9/mo</p>
+            <p class="free">2 months free</p>
           </div>
   
         </label>
@@ -143,8 +144,9 @@
           </div>
   
           <div class="plan-info">
-            <h2 class="md-bold">Advanced</h2>
+            <p class="md-bold">Advanced</p>
             <p class="md-thin">$12/mo</p>
+            <p class="free">2 months free</p>
           </div>
    
    </label>
@@ -159,6 +161,7 @@
           <div class="plan-info">
             <h2 class="md-bold">Pro</h2>
             <p class="md-thin">$15/mo</p>
+            <p class="free">2 months free</p>
           </div>
           
 
@@ -292,10 +295,24 @@
     <div class="btn-container">
       <button class="btn prev md-medium">Go back</button>
       <button class="btn next">Next Step</button>
+      <input type="submit" value="Confirm" class="btn confirm">
     </div>
 
   </form>
 
+  <div class="submit-success flex hidden">
+    <div class="success-container">
+      <div class="success-img">
+        <img src="assets/images/icon-thank-you.svg" alt="">
+      </div>
+      <div class="success-msg">
+       <h2 class="title my-2 text-center">Thank you!</h2>
+       <p class="md-thin text-center">Thanks for confirming your suscription! 
+        We hope you have fun using our platforms. If you ever need support, 
+        please feel free to email us at support@loremgaming.com
+      </p>
+      </div>
+  </div>
   </div>
     
 </section>

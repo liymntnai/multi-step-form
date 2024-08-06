@@ -129,6 +129,7 @@ margin: 3px 0;
 .p-info:focus{
     outline:  1px solid hsl(243, 100%, 62%);
 }
+
 /* Select plan */
 .plan-container.flex{
     margin: 1rem 0;
@@ -152,13 +153,17 @@ margin: 3px 0;
     width: 40px;
     margin-bottom: 2rem;
 }
-.plan-name{
-font-size: 0.8rem;
-color: #333;
-margin: 2px;
-}
+
 .plan-price{
     font-size: 0.8em;
+}
+.free{
+  color: var(--marine-blue);
+font-size: 1em;
+letter-spacing: 1px;
+font-weight: 300;
+margin-top: 5px;
+display: none;
 }
 label{
   cursor: pointer;
@@ -251,7 +256,7 @@ gap: 40px;
     padding:20px;
     box-shadow: 0 0 1px #000;
     margin-bottom: 16px;
-    font-size: 1.1rem;
+
 }
 .add-on .service{
     gap: 1rem;
@@ -368,7 +373,14 @@ gap: 40px;
     color: var(--purplish-blue);
     letter-spacing: 1px;
 }
- 
+.submit-success{
+  min-height: 450px;
+  max-width: 450px;
+}
+.success-img{
+  width: 80px;
+  margin: auto;
+}
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); }
 
